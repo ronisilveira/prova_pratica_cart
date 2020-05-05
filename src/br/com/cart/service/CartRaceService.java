@@ -15,6 +15,7 @@ public class CartRaceService {
 	}
 
 	public List<PilotResult> getRaceResult() {
+		repository.loadDataLog();
 		return null;
 	}
 
