@@ -16,22 +16,24 @@ public class CartApplication {
 
 		ResultView view = new ResultView();
 		int option = view.getStrategy();
-		CartRaceService service = new CartRaceService(new DataLogRepository(), createStrategy(option));
+		
+		CartRaceService service = new CartRaceService(
+				new DataLogRepository(), createStrategy(option));
 
 		List<PilotResult> raceResult = service.getRaceResult();
 
 		view.showRaceResult(raceResult);
 		view.showBestLaps(raceResult);
 		view.showRaceBestLap(service.getRaceBestLaps());
-		view.showAvgSpeed(raceResult);
-		view.showTimeAfterWinner(raceResult);
+		view.showAvgSpeedAndTimeAfterWinner(raceResult);
 	}
 
 	private static ResultStrategy createStrategy(int option) {
+		
 		switch (option) {
-		case 0:
-			return new AllLogStrategy();
 		case 1:
+			return new AllLogStrategy();
+		case 2:
 			return new UntilWinnerStrategy();
 		default:
 			return null;
