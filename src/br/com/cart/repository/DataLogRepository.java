@@ -58,9 +58,9 @@ public class DataLogRepository {
 
 		result.setTime(getTime(parts[TIME_IDX]));
 		result.setPilot(getPilot(parts[PILOT_CODE_IDX], parts[PILOT_NAME_IDX], pilots));
-		result.setTurn(Integer.parseInt(parts[TURN_IDX]));
-		result.setTurnTime(getDuration(parts[TURN_TIME_IDX]));
-		result.setAvgTurnSpeed(Double.parseDouble(parts[SPEED_IDX].replace(",", ".")));
+		result.setLap(Integer.parseInt(parts[TURN_IDX]));
+		result.setLapTime(getDuration(parts[TURN_TIME_IDX]));
+		result.setAvgLapSpeed(Double.parseDouble(parts[SPEED_IDX].replace(",", ".")));
 
 		return result;
 	}

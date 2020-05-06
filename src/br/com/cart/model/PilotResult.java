@@ -8,13 +8,15 @@ public class PilotResult {
 	
 	private int position;
 	
-	private int completedTurns;
+	private int completedLaps;
 	
 	private Duration raceTime;
 	
 	private Double avgRaceSpeed;
 	
 	private Duration timeAfterWinner;
+	
+	private BestLap bestLap;
 
 	public Pilot getPilot() {
 		return pilot;
@@ -32,12 +34,12 @@ public class PilotResult {
 		this.position = position;
 	}
 
-	public int getCompletedTurns() {
-		return completedTurns;
+	public int getCompletedLaps() {
+		return completedLaps;
 	}
 
-	public void setCompletedTurns(int completedTurns) {
-		this.completedTurns = completedTurns;
+	public void setCompletedLaps(int completedLaps) {
+		this.completedLaps = completedLaps;
 	}
 
 	public Duration getRaceTime() {
@@ -62,5 +64,13 @@ public class PilotResult {
 
 	public void setTimeAfterWinner(Duration timeAfterWinner) {
 		this.timeAfterWinner = timeAfterWinner;
+	}
+
+	public BestLap getBestLap() {
+		return bestLap;
+	}
+
+	public void setBestLap(BestLap bestLap) {
+		this.bestLap = bestLap;
 	}
 }
