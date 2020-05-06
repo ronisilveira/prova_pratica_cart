@@ -12,11 +12,7 @@ import br.com.cart.model.Pilot;
 
 public abstract class ResultStrategy {
 
-	private final static int FINAL_LAP = 4;
-
-	public int position(Pilot pilot, List<DataLog> allDataLogs) {
-		return 0;
-	}
+	protected final static int FINAL_LAP = 4;
 
 	public Duration timeAfterWinner(List<DataLog> pilotDataLogs, List<DataLog> allDataLogs) {
 
@@ -36,7 +32,8 @@ public abstract class ResultStrategy {
 
 		Optional<DataLog> finishLog = dataLogs.stream()
 				.sorted(Comparator.comparing(DataLog::getTime))
-				.filter(log -> log.getLap() == FINAL_LAP).findFirst();
+				.filter(log -> log.getLap() == FINAL_LAP)
+				.findFirst();
 
 		if (finishLog.isPresent())
 			return finishLog.get().getTime();
@@ -60,6 +57,8 @@ public abstract class ResultStrategy {
 		
 		return bestLap;
 	}
+
+	public abstract int position(Pilot pilot, List<DataLog> allDataLogs);
 
 	protected abstract int completedLaps(List<DataLog> pilotDataLogs, List<DataLog> allDataLogs);
 

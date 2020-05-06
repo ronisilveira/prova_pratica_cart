@@ -5,11 +5,29 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalDouble;
+import java.util.stream.Collectors;
 
 import br.com.cart.model.BestLap;
 import br.com.cart.model.DataLog;
+import br.com.cart.model.Pilot;
 
 public class AllLogStrategy extends ResultStrategy {
+
+	@Override
+	public int position(Pilot pilot, List<DataLog> allDataLogs) {
+
+		int pos = allDataLogs.stream()
+				.sorted(Comparator.comparing(DataLog::getTime))
+				.filter(log -> log.getLap() == FINAL_LAP)
+				.map(DataLog::getPilot)
+				.collect(Collectors.toList())
+				.indexOf(pilot);
+		
+		if (pos == -1)
+			return 999;
+		
+		return pos + 1;
+	}
 
 	@Override
 	public int completedLaps(List<DataLog> pilotDataLogs, List<DataLog> allDataLogs) {

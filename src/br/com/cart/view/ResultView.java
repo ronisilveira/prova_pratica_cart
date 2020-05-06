@@ -17,8 +17,11 @@ public class ResultView {
 		System.out.println("|------------------------------------------------------------------------------|");
 
 		raceResult.forEach(result -> {
-			System.out.printf("|%5dst. | %03d - %-24s | %15d | %8d:%02d.%03d |\n",
-					result.getPosition(), 
+			if (result.getPosition() < 999)
+				System.out.printf("| %4dst. |", result.getPosition());
+			else
+				System.out.printf("|         |", result.getPosition());
+			System.out.printf(" %03d - %-24s | %15d | %8d:%02d.%03d |\n",
 					result.getPilot().getCode(), result.getPilot().getName(), 
 					result.getCompletedLaps(),
 					result.getRaceTime().toMinutes(),
